@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.1.4] - 2026-03-05
+### Added
+- Output-side utility actions next to the output box:
+  - Copy Text
+  - Copy HTML
+  - Download PNG
+  - Download SVG
+
+### Changed
+- Moved copy/download actions from header area to output panel for easier workflow.
+
 ## [0.1.3] - 2026-03-05
 ### Added
 - `Copy Output` button for quick clipboard copy (copies current input LaTeX, falls back to output text).

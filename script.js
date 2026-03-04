@@ -4,7 +4,10 @@ const errorEl = document.getElementById('error');
 const displayMode = document.getElementById('displayMode');
 const autoRender = document.getElementById('autoRender');
 const renderBtn = document.getElementById('renderBtn');
-const copyBtn = document.getElementById('copyBtn');
+const copyTextBtn = document.getElementById('copyTextBtn');
+const copyHtmlBtn = document.getElementById('copyHtmlBtn');
+const downloadPngBtn = document.getElementById('downloadPngBtn');
+const downloadSvgBtn = document.getElementById('downloadSvgBtn');
 const sampleBtn = document.getElementById('sampleBtn');
 const clearBtn = document.getElementById('clearBtn');
 const homeBtn = document.getElementById('homeBtn');
@@ -72,21 +75,60 @@ clearBtn.onclick = ()=>{ input.value=''; render(); savePrefs(); };
 homeBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
 bannerBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
 renderBtn.onclick = render;
-copyBtn.onclick = async ()=>{
-  const textToCopy = input.value?.trim() || output.textContent?.trim() || '';
-  if (!textToCopy) {
-    copyBtn.textContent = 'Nothing to copy';
-    setTimeout(()=> copyBtn.textContent = 'Copy Output', 1200);
-    return;
-  }
-  try {
-    await navigator.clipboard.writeText(textToCopy);
-    copyBtn.textContent = 'Copied!';
-  } catch {
-    copyBtn.textContent = 'Copy failed';
-  }
-  setTimeout(()=> copyBtn.textContent = 'Copy Output', 1200);
+
+async function flashBtn(btn, okText='Copied!', failText='Failed') {
+  const old = btn.textContent;
+  btn.textContent = okText;
+  setTimeout(()=> btn.textContent = old, 1200);
+}
+
+copyTextBtn.onclick = async ()=>{
+  const txt = output.textContent?.trim() || '';
+  if (!txt) return flashBtn(copyTextBtn, 'Nothing to copy');
+  try { await navigator.clipboard.writeText(txt); flashBtn(copyTextBtn, 'Copied!'); }
+  catch { flashBtn(copyTextBtn, 'Copy failed'); }
 };
+
+copyHtmlBtn.onclick = async ()=>{
+  const html = output.innerHTML?.trim() || '';
+  if (!html) return flashBtn(copyHtmlBtn, 'Nothing to copy');
+  try { await navigator.clipboard.writeText(html); flashBtn(copyHtmlBtn, 'Copied!'); }
+  catch { flashBtn(copyHtmlBtn, 'Copy failed'); }
+};
+
+downloadPngBtn.onclick = async ()=>{
+  if (!window.html2canvas) return flashBtn(downloadPngBtn, 'PNG unavailable');
+  try {
+    const canvas = await window.html2canvas(output, {backgroundColor:'#0d1424', scale:2});
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png');
+    a.download = 'latex-output.png';
+    a.click();
+    flashBtn(downloadPngBtn, 'PNG saved');
+  } catch {
+    flashBtn(downloadPngBtn, 'PNG failed');
+  }
+};
+
+downloadSvgBtn.onclick = ()=>{
+  const tex = (input.value || '').trim();
+  if (!tex || !window.katex) return flashBtn(downloadSvgBtn, 'SVG unavailable');
+  try {
+    const mathml = window.katex.renderToString(tex, { throwOnError: true, output: 'mathml' });
+    const svg = `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300">\n  <foreignObject x="0" y="0" width="1200" height="300">\n    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:28px;padding:20px;color:#e5e7eb;background:#0d1424;">${mathml}</div>\n  </foreignObject>\n</svg>`;
+    const blob = new Blob([svg], {type:'image/svg+xml;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'latex-output.svg';
+    a.click();
+    URL.revokeObjectURL(url);
+    flashBtn(downloadSvgBtn, 'SVG saved');
+  } catch {
+    flashBtn(downloadSvgBtn, 'SVG failed');
+  }
+};
+
 displayMode.onchange = ()=>{ if(autoRender.checked) render(); savePrefs(); };
 autoRender.onchange = savePrefs;
 input.addEventListener('input', ()=>{ if(autoRender.checked) render(); else savePrefs(); });

@@ -22,7 +22,6 @@
       <label><input type="checkbox" id="displayMode" checked /> Display mode</label>
       <label><input type="checkbox" id="autoRender" checked /> Auto render</label>
       <button id="renderBtn">Render</button>
-      <button id="copyBtn">Copy Output</button>
     </section>
 
     <section class="grid">
@@ -33,6 +32,12 @@
 
       <article class="card">
         <h2>Output</h2>
+        <div class="output-actions">
+          <button id="copyTextBtn">Copy Text</button>
+          <button id="copyHtmlBtn">Copy HTML</button>
+          <button id="downloadPngBtn">Download PNG</button>
+          <button id="downloadSvgBtn">Download SVG</button>
+        </div>
         <div id="output" class="output">Rendered output will appear here.</div>
         <p id="error" class="error"></p>
       </article>
@@ -44,6 +49,7 @@
   </main>
 
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script defer src="script.js"></script>
 </body>
 </html>
