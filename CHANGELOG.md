@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2] - 2026-03-05
+### Changed
+- Made the top banner clickable (scroll-to-top behavior).
+- Updated favicon link to a relative path (`favicon.svg`) so it works correctly on GitHub Pages subpaths.
+
+### Docs
+- Updated README features accordingly.
+
 ## [0.1.1] - 2026-03-05
 ### Changed
 - Switched UI language to English.

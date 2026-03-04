@@ -7,6 +7,7 @@ const renderBtn = document.getElementById('renderBtn');
 const sampleBtn = document.getElementById('sampleBtn');
 const clearBtn = document.getElementById('clearBtn');
 const homeBtn = document.getElementById('homeBtn');
+const bannerBtn = document.getElementById('bannerBtn');
 
 const PREF_KEY='latex-converter-prefs-v1';
 
@@ -68,6 +69,7 @@ sampleBtn.onclick = ()=>{
 };
 clearBtn.onclick = ()=>{ input.value=''; render(); savePrefs(); };
 homeBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
+bannerBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
 renderBtn.onclick = render;
 displayMode.onchange = ()=>{ if(autoRender.checked) render(); savePrefs(); };
 autoRender.onchange = savePrefs;

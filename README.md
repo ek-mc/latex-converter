@@ -8,6 +8,8 @@ Neat dark LaTeX converter/editor for quick rendering in the browser.
 - Auto-render toggle
 - LocalStorage persistence
 - Dark UI
+- Clickable top banner (scroll-to-top)
+- Relative favicon path for GitHub Pages compatibility
 
 ## Live
 - https://ek-mc.github.io/latex-converter/
