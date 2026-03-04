@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LaTeX Converter</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>∑ LaTeX Converter</h1>
+      <p>Γράψε LaTeX αριστερά, δες render δεξιά. Dark, clean, fast.</p>
+    </header>
+
+    <section class="controls card">
+      <button id="homeBtn">Αρχική</button>
+      <button id="sampleBtn">Δείγμα</button>
+      <button id="clearBtn">Καθαρισμός</button>
+      <label><input type="checkbox" id="displayMode" checked /> Display mode</label>
+      <label><input type="checkbox" id="autoRender" checked /> Auto render</label>
+      <button id="renderBtn">Render</button>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>LaTeX Input</h2>
+        <textarea id="input" placeholder="π.χ. \\int_0^1 x^2 \\, dx = \\frac{1}{3}"></textarea>
+      </article>
+
+      <article class="card">
+        <h2>Output</h2>
+        <div id="output" class="output">Το αποτέλεσμα θα εμφανιστεί εδώ.</div>
+        <p id="error" class="error"></p>
+      </article>
+    </section>
+
+    <footer>
+      <small>Built for GitHub Pages • KaTeX renderer</small>
+    </footer>
+  </main>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
