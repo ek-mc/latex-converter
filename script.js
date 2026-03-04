@@ -31,8 +31,13 @@ function render(){
   errorEl.textContent='';
   const tex = input.value.trim();
   if(!tex){ output.textContent='Rendered output will appear here.'; return; }
+  if (typeof window.katex === 'undefined') {
+    output.textContent='';
+    errorEl.textContent='Renderer not loaded yet. Please refresh once.';
+    return;
+  }
   try{
-    katex.render(tex, output, {throwOnError:true, displayMode: displayMode.checked, strict:'warn'});
+    window.katex.render(tex, output, {throwOnError:true, displayMode: displayMode.checked, strict:'warn'});
   }catch(e){
     output.textContent='';
     errorEl.textContent='LaTeX error: ' + e.message;
