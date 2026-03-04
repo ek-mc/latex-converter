@@ -62,7 +62,8 @@ function render(){
 }
 
 sampleBtn.onclick = ()=>{
-  input.value='\\\\int_0^{2\\pi} \\sin(x)\\,dx = 0\\n\\n\\\\frac{d}{dx}(x^3)=3x^2';
+  input.value = String.raw`\int_0^{2\pi} \sin(x)\,dx = 0
+\frac{d}{dx}(x^3)=3x^2`;
   render();
 };
 clearBtn.onclick = ()=>{ input.value=''; render(); savePrefs(); };
