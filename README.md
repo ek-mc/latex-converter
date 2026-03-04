@@ -3,7 +3,7 @@
 Neat dark LaTeX converter/editor for quick rendering in the browser.
 
 ## Features
-- Live render (KaTeX)
+- Live render
 - Display/inline mode toggle
 - Auto-render toggle
 - LocalStorage persistence
@@ -14,6 +14,9 @@ Neat dark LaTeX converter/editor for quick rendering in the browser.
 
 ## Live
 - https://ek-mc.github.io/latex-converter/
+
+## Screenshot
+![LaTeX Converter UI](assets/screenshot.jpg)
 
 ## Run locally
 Open `index.html`.

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5] - 2026-03-05
+### Changed
+- README wording updated (removed explicit KaTeX mention from feature bullet).
+
+### Added
+- Screenshot section in README (`assets/screenshot.jpg`).
+
 ## [0.1.4] - 2026-03-05
 ### Added
 - Output-side utility actions next to the output box:
