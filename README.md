@@ -14,3 +14,7 @@ Neat dark LaTeX converter/editor for quick rendering in the browser.
 
 ## Run locally
 Open `index.html`.
+
+
+## License
+MIT

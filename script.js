@@ -30,12 +30,12 @@ function loadPrefs(){
 function render(){
   errorEl.textContent='';
   const tex = input.value.trim();
-  if(!tex){ output.textContent='Το αποτέλεσμα θα εμφανιστεί εδώ.'; return; }
+  if(!tex){ output.textContent='Rendered output will appear here.'; return; }
   try{
     katex.render(tex, output, {throwOnError:true, displayMode: displayMode.checked, strict:'warn'});
   }catch(e){
     output.textContent='';
-    errorEl.textContent='Σφάλμα LaTeX: ' + e.message;
+    errorEl.textContent='LaTeX error: ' + e.message;
   }
   savePrefs();
 }
