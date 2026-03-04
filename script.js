@@ -4,6 +4,7 @@ const errorEl = document.getElementById('error');
 const displayMode = document.getElementById('displayMode');
 const autoRender = document.getElementById('autoRender');
 const renderBtn = document.getElementById('renderBtn');
+const copyBtn = document.getElementById('copyBtn');
 const sampleBtn = document.getElementById('sampleBtn');
 const clearBtn = document.getElementById('clearBtn');
 const homeBtn = document.getElementById('homeBtn');
@@ -71,6 +72,21 @@ clearBtn.onclick = ()=>{ input.value=''; render(); savePrefs(); };
 homeBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
 bannerBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
 renderBtn.onclick = render;
+copyBtn.onclick = async ()=>{
+  const textToCopy = input.value?.trim() || output.textContent?.trim() || '';
+  if (!textToCopy) {
+    copyBtn.textContent = 'Nothing to copy';
+    setTimeout(()=> copyBtn.textContent = 'Copy Output', 1200);
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(textToCopy);
+    copyBtn.textContent = 'Copied!';
+  } catch {
+    copyBtn.textContent = 'Copy failed';
+  }
+  setTimeout(()=> copyBtn.textContent = 'Copy Output', 1200);
+};
 displayMode.onchange = ()=>{ if(autoRender.checked) render(); savePrefs(); };
 autoRender.onchange = savePrefs;
 input.addEventListener('input', ()=>{ if(autoRender.checked) render(); else savePrefs(); });

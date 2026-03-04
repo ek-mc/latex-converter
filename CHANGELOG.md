@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.3] - 2026-03-05
+### Added
+- `Copy Output` button for quick clipboard copy (copies current input LaTeX, falls back to output text).
+
 ## [0.1.2] - 2026-03-05
 ### Changed
 - Made the top banner clickable (scroll-to-top behavior).

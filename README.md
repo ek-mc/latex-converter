@@ -10,6 +10,7 @@ Neat dark LaTeX converter/editor for quick rendering in the browser.
 - Dark UI
 - Clickable top banner (scroll-to-top)
 - Relative favicon path for GitHub Pages compatibility
+- One-click copy button (copies current LaTeX/input text)
 
 ## Live
 - https://ek-mc.github.io/latex-converter/
