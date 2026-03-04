@@ -29,15 +29,31 @@ function loadPrefs(){
 
 function render(){
   errorEl.textContent='';
-  const tex = input.value.trim();
-  if(!tex){ output.textContent='Rendered output will appear here.'; return; }
+  const raw = input.value.trim();
+  if(!raw){ output.textContent='Rendered output will appear here.'; return; }
   if (typeof window.katex === 'undefined') {
     output.textContent='';
     errorEl.textContent='Renderer not loaded yet. Please refresh once.';
     return;
   }
+
+  // Accept pasted literal "\\n" and convert to real newlines
+  const tex = raw.replace(/\\n/g, '\n');
+
   try{
-    window.katex.render(tex, output, {throwOnError:true, displayMode: displayMode.checked, strict:'warn'});
+    if (displayMode.checked && tex.includes('\n')) {
+      // Render multiline display as separate blocks
+      const parts = tex.split(/\n+/).map(s => s.trim()).filter(Boolean);
+      output.innerHTML = '';
+      for (const part of parts) {
+        const line = document.createElement('div');
+        line.style.marginBottom = '10px';
+        window.katex.render(part, line, {throwOnError:true, displayMode:true, strict:'warn'});
+        output.appendChild(line);
+      }
+    } else {
+      window.katex.render(tex, output, {throwOnError:true, displayMode: displayMode.checked, strict:'warn'});
+    }
   }catch(e){
     output.textContent='';
     errorEl.textContent='LaTeX error: ' + e.message;
