@@ -24,3 +24,7 @@ Open `index.html`.
 
 ## License
 MIT
+
+
+## Changelog
+See [CHANGELOG.md](CHANGELOG.md).
