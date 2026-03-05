@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.6] - 2026-03-05
+### Fixed
+- Multi-line LaTeX now preserves line breaks in **inline mode** as well (previously only display mode split lines).
+
 ## [0.1.5] - 2026-03-05
 ### Changed
 - README wording updated (removed explicit KaTeX mention from feature bullet).

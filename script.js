@@ -46,14 +46,14 @@ function render(){
   const tex = raw.replace(/\\n/g, '\n');
 
   try{
-    if (displayMode.checked && tex.includes('\n')) {
-      // Render multiline display as separate blocks
+    if (tex.includes('\n')) {
+      // Render multiline input line-by-line in both display and inline modes
       const parts = tex.split(/\n+/).map(s => s.trim()).filter(Boolean);
       output.innerHTML = '';
       for (const part of parts) {
         const line = document.createElement('div');
-        line.style.marginBottom = '10px';
-        window.katex.render(part, line, {throwOnError:true, displayMode:true, strict:'warn'});
+        line.style.marginBottom = displayMode.checked ? '10px' : '6px';
+        window.katex.render(part, line, {throwOnError:true, displayMode: displayMode.checked, strict:'warn'});
         output.appendChild(line);
       }
     } else {
