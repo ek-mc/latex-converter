@@ -12,6 +12,7 @@ const sampleBtn = document.getElementById('sampleBtn');
 const clearBtn = document.getElementById('clearBtn');
 const homeBtn = document.getElementById('homeBtn');
 const bannerBtn = document.getElementById('bannerBtn');
+const presetActions = document.getElementById('presetActions');
 
 const PREF_KEY='latex-converter-prefs-v1';
 
@@ -75,6 +76,15 @@ clearBtn.onclick = ()=>{ input.value=''; render(); savePrefs(); };
 homeBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
 bannerBtn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
 renderBtn.onclick = render;
+
+presetActions?.addEventListener('click', (event) => {
+  const btn = event.target.closest('button[data-snippet]');
+  if (!btn) return;
+  const snippet = btn.dataset.snippet || '';
+  input.value = input.value.trim() ? `${input.value}\n${snippet}` : snippet;
+  input.focus();
+  if (autoRender.checked) render(); else savePrefs();
+});
 
 async function flashBtn(btn, okText='Copied!', failText='Failed') {
   const old = btn.textContent;

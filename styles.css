@@ -13,6 +13,8 @@ button:hover{background:#23365a}
 label{color:var(--muted);font-size:14px;display:flex;align-items:center;gap:6px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 textarea{width:100%;min-height:380px;background:#0d1424;color:#e2e8f0;border:1px solid #263553;border-radius:10px;padding:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.preset-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.preset-actions button{font-size:13px;padding:7px 10px}
 .output-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
 .output{min-height:380px;background:#0d1424;border:1px solid #263553;border-radius:10px;padding:14px;overflow:auto}
 .error{color:var(--danger);min-height:22px}

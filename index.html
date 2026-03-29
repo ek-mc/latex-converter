@@ -27,6 +27,15 @@
     <section class="grid">
       <article class="card">
         <h2>LaTeX Input</h2>
+        <div class="preset-actions" id="presetActions">
+          <button data-snippet="\\frac{a}{b}">Fraction</button>
+          <button data-snippet="x^{2}">Exponent</button>
+          <button data-snippet="\\sqrt{x}">Square root</button>
+          <button data-snippet="\\int_a^b f(x)\\,dx">Integral</button>
+          <button data-snippet="\\sum_{n=1}^{N} n">Summation</button>
+          <button data-snippet="\\alpha, \\beta, \\gamma, \\theta">Greek letters</button>
+          <button data-snippet="\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}">Matrix</button>
+        </div>
         <textarea id="input" placeholder="e.g. \\int_0^1 x^2 \\, dx = \\frac{1}{3}"></textarea>
       </article>
 

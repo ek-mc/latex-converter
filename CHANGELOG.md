@@ -1,6 +1,16 @@
 # Changelog
 
-## [Unreleased]
+## [0.1.7] - 2026-03-30
+### Added
+- Quick preset buttons for common LaTeX snippets:
+  - fraction
+  - exponent
+  - square root
+  - integral
+  - summation
+  - Greek letters
+  - matrix
+- Preset buttons insert snippets directly into the input area for faster editing and experimentation.
 
 ## [0.1.6] - 2026-03-05
 ### Fixed
