@@ -4,6 +4,7 @@ const errorEl = document.getElementById('error');
 const displayMode = document.getElementById('displayMode');
 const autoRender = document.getElementById('autoRender');
 const renderBtn = document.getElementById('renderBtn');
+const copyLatexBtn = document.getElementById('copyLatexBtn');
 const copyTextBtn = document.getElementById('copyTextBtn');
 const copyHtmlBtn = document.getElementById('copyHtmlBtn');
 const downloadPngBtn = document.getElementById('downloadPngBtn');
@@ -91,6 +92,13 @@ async function flashBtn(btn, okText='Copied!', failText='Failed') {
   btn.textContent = okText;
   setTimeout(()=> btn.textContent = old, 1200);
 }
+
+copyLatexBtn.onclick = async ()=>{
+  const latex = input.value?.trim() || '';
+  if (!latex) return flashBtn(copyLatexBtn, 'Nothing to copy');
+  try { await navigator.clipboard.writeText(latex); flashBtn(copyLatexBtn, 'Copied!'); }
+  catch { flashBtn(copyLatexBtn, 'Copy failed'); }
+};
 
 copyTextBtn.onclick = async ()=>{
   const txt = output.textContent?.trim() || '';

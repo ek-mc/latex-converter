@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.8] - 2026-04-03
+### Added
+- `Copy LaTeX` button for quickly copying the raw input expression from the editor.
+
 ## [0.1.7] - 2026-03-30
 ### Added
 - Quick preset buttons for common LaTeX snippets:
